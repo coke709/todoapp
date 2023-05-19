@@ -1,0 +1,49 @@
+.top{
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.top>span{
+    margin-left: 20px;
+}
+
+/* ********* top ********** */
+
+.content{
+    min-height: 90vh;    
+}
+
+.main{
+    width: 50vw;
+    height: 30vw;
+}
+
+.items{
+    width: 50vw;
+    min-height: 10vw;
+    flex-wrap: nowrap;
+}
+
+.mic{
+    font-size: 4vw;
+    color: lightblue;
+    cursor: pointer;
+}
+
+.mic:hover{
+    color: yellow;
+}
+
+
+/* ********* content ********** */
+
+.footer{
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+.footer>span{
+    margin-left: 20px;
+}
