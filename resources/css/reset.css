@@ -48,9 +48,9 @@ table {
 }
 
 /* 레이아웃 작성을 위한 css */
-div,ul,li{
+/* div,ul,li{
 	box-shadow: 0 0 0 1px lightgray inset;
-} 
+}  */
 
 button{
 	border:0 none;
