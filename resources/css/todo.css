@@ -36,7 +36,14 @@ html{
     width: 50vw;
     min-height: 10vw;
     margin: 10px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item{
+    padding: 1rem;
+    width: 20rem;
+    margin-top: 10px;
 }
 
 .mic{
@@ -47,6 +54,10 @@ html{
 
 .mic:hover{
     color: yellow;
+}
+
+.icon-trash:hover{
+    color:yellow;
 }
 
 .pop__inp-todo{
@@ -87,7 +98,12 @@ html{
     .items{
         width: 80vw;
         min-height: 20vw;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .item{
+        width: 25vw;
     }
 
     .pop__inp-todo{
