@@ -37,13 +37,19 @@ html{
     min-height: 10vw;
     margin: 10px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .item{
     padding: 1rem;
-    width: 20rem;
-    margin-top: 10px;
+    width: 10rem;
+    margin:3px;
+    
+}
+
+.item>div{
+    width: 8rem;
+    overflow: hidden;
 }
 
 .mic{

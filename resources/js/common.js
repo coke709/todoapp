@@ -38,3 +38,25 @@ let removeLocalStorage = (k, fn) => {
     let tmpArr = items.filter(fn);
     localStorage.setItem(k, JSON.stringify(tmpArr));
 }
+
+// attrs = {prop:{}, style:{}, text:str}
+let createElement = (tag, attrs) => {
+    let element = document.createElement(tag);
+    if(!attrs) return element;
+
+    for(p in attrs.prop){
+        element[p] = attrs.prop[p];
+    }
+
+    for(p in attrs.style){
+        element.style[p] = attrs.style[p];
+    }
+
+    if(attrs.text){
+        let textNode = document.createTextNode(attrs.text);
+        element.appendChild(textNode);
+    }
+
+    return element;
+    
+}

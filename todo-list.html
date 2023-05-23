@@ -35,6 +35,7 @@
     </div>
 
     <div class="pop__inp-todo col-evenly center" id="popInpTodo" style="display:none">
+        <input type="hidden" id="todoId">
         <div class="row-around">
             <span>제목</span>
             <input type="text" id="todoTitle" required>
@@ -52,6 +53,7 @@
             <textarea style="resize:none" id="todoContent"></textarea>
         </div>
         <div class="row-around">
+            <button class="btn-red" id="btnModifyTodo">수정하기</button>
             <button class="btn-red" id="btnAddTodo">등록하기</button>
             <button class="btn-lightblue" id="btnPopInpTodoClose">닫기</button>
         </div>

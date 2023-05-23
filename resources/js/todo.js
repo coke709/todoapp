@@ -20,7 +20,26 @@ let generateTodoObj = id => {
     return item;
 }
 
+let initTodoForm = () => {
+    todoId.value = '';
+    todoTitle.value = '';
+    todoStartedAt.value = '';
+    todoEndAt.value = '';
+    todoContent.value = '';
+}
+
+let fillTodoForm = e => {
+    todoId.value = e.id;
+    todoTitle.value = e.todoTitle;
+    todoStartedAt.valueAsNumber = e.todoStartedAt?e.todoStartedAt:NaN;
+    todoEndAt.valueAsNumber = e.todoEndAt?e.todoEndAt:NaN;
+    todoContent.value = e.todoContent;
+}
+
 btnInpTodo.addEventListener('click', ev => {
+    initTodoForm();
+    btnModifyTodo.style.display = 'none';
+    btnAddTodo.style.display = 'block';
     popInpTodo.style.display='flex';
 })
 
@@ -31,11 +50,10 @@ let renderTodo = () => {
     todoItems.innerHTML = ''; //기존에 렌더링 되어있는 todo 클리어
 
     items.forEach(e => {
-        let todoLi = document.createElement('li');
-        todoLi.className = 'btn-lightcoral item row-between';
-        let textNode = document.createTextNode(e.todoTitle);
-        let trashIcon = document.createElement('i');
-        trashIcon.className = 'fa-solid fa-trash-can icon-trash';
+        // attrs = {prop:{}, style:{}, text:str}
+        let todoLi = createElement('li',{prop:{className:'btn-lightcoral item row-between'}});
+        let todoDiv = createElement('div', {text:e.todoTitle});
+        let trashIcon = createElement('i', {prop:{className:'fa-solid fa-trash-can icon-trash'}});
 
         //자바스크립트에서 함수는 1급객체
         // 1급객체 : 값으로 다룰 수 있는 것
@@ -49,10 +67,13 @@ let renderTodo = () => {
         })
 
         todoLi.addEventListener('click', ev => {
+            btnModifyTodo.style.display = 'block';
+            btnAddTodo.style.display = 'none';
+            fillTodoForm(e);
             popInpTodo.style.display='flex';
         })
 
-        todoLi.appendChild(textNode);
+        todoLi.appendChild(todoDiv);
         todoLi.appendChild(trashIcon);
         todoItems.appendChild(todoLi);
     });
@@ -76,6 +97,24 @@ btnAddTodo.addEventListener('click', ev => {
     renderTodo();
 
     popInpTodo.style.display='none';
+})
+
+btnModifyTodo.addEventListener('click', ev => {
+    let items = getLocalStorage('todoItems');
+    let item = generateTodoObj(todoId.value);
+
+    let validObj = validate(item);
+
+    if(!validObj.isValid){
+        alert(validObj.msg);
+        return;
+    } 
+
+    items.splice(items.findIndex(e => e.id == item.id),1,item);
+    localStorage.setItem('todoItems', JSON.stringify(items));
+   
+    popInpTodo.style.display='none';
+    renderTodo();
 })
 
 
