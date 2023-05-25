@@ -58,5 +58,16 @@ let createElement = (tag, attrs) => {
     }
 
     return element;
-    
+}
+
+const generateFormUrlEncoded = params => {
+
+    let tmp = [];
+
+    for(key in params){
+        tmp.push(`${key}=${params[key]}`);
+    }
+
+    return encodeURI(tmp.join('&'));
+
 }

@@ -12,26 +12,29 @@
     <link rel="stylesheet" href="./resources/css/todo.css">
     <script src="./resources/js/common.js"></script>
     <script async src="./resources/js/todo.js"></script>
-
+    <script async src="./resources/js/bored-api.js"></script>
+    <script async src="./resources/js/speech.js"></script>
+    <script async src="./resources/js/unsplash-api.js"></script>
+    <script async src="./resources/js/weather-api.js"></script>
 </head>
 <body>
 
-    <div class="top">
-        <span>30℃ Seoul</span>
+    <div class="top" >
+        <span id="weatherInfo">30℃ Seoul</span>
     </div>
     <div class="content">
         <div class="main col-evenly">
-            <span>오늘 이런 일을 하는 것은 어때요?</span>
-            <button class="btn-lightcoral">추천 받기</button>
+            <span id="todoRecommand">오늘 이런 일을 하는 것은 어때요?</span>
+            <button class="btn-lightcoral" id="btnRecommand">추천 받기</button>
             <button class="btn-lightblue" id="btnInpTodo">ADD TODO</button>
-            <i class="fa-solid fa-microphone-lines mic"></i>
+            <i class="fa-solid fa-microphone-lines mic" id="mic"></i>
         </div>
         <ul class="items row-evenly" id="todoItems">
            
         </ul>
     </div>
     <div class="footer">
-        <span>my favorite place</span>
+        <span id="placeInfo">my favorite place</span>
     </div>
 
     <div class="pop__inp-todo col-evenly center" id="popInpTodo" style="display:none">

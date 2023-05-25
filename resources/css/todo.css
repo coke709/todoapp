@@ -2,6 +2,11 @@ html{
     font-size: 1vw;
 }
 
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 
 .top{
     height: 5vh;
@@ -11,6 +16,7 @@ html{
 
 .top>span{
     margin-left: 20px;
+    color: white;
 }
 
 /* ********* top ********** */
@@ -50,6 +56,8 @@ html{
 .item>div{
     width: 8rem;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .mic{
@@ -88,6 +96,7 @@ html{
 
 .footer>span{
     margin-left: 20px;
+    color: white;
 }
 
 @media(width <= 1200px) {
