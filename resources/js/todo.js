@@ -1,4 +1,4 @@
-let validate = data => {
+const validate = data => {
     if(!data.todoTitle){
         return {"isValid":false, "msg":"제목은 반드시 입력하셔야 합니다."};
     }
@@ -10,7 +10,7 @@ let validate = data => {
     return {"isValid":true};
 }
 
-let generateTodoObj = id => {
+const generateTodoObj = id => {
     let item = {};
     item.id = id;
     item.todoTitle = todoTitle.value;
@@ -20,7 +20,7 @@ let generateTodoObj = id => {
     return item;
 }
 
-let initTodoForm = () => {
+const initTodoForm = () => {
     todoId.value = '';
     todoTitle.value = '';
     todoStartedAt.value = '';
@@ -28,7 +28,7 @@ let initTodoForm = () => {
     todoContent.value = '';
 }
 
-let fillTodoForm = e => {
+const fillTodoForm = e => {
     todoId.value = e.id;
     todoTitle.value = e.todoTitle;
     todoStartedAt.valueAsNumber = e.todoStartedAt?e.todoStartedAt:NaN;
@@ -36,19 +36,15 @@ let fillTodoForm = e => {
     todoContent.value = e.todoContent;
 }
 
-btnInpTodo.addEventListener('click', ev => {
-    initTodoForm();
-    btnModifyTodo.style.display = 'none';
-    btnAddTodo.style.display = 'block';
-    popInpTodo.style.display='flex';
-})
-
-let renderTodo = () => {
+const renderTodo = () => {
     let items = getLocalStorage('todoItems');
-    //종료시간 순으로 데이터를 화면에 렌더링 
-    items.sort((a,b) => a.todoEndAt - b.todoEndAt);
+    
+     
     todoItems.innerHTML = ''; //기존에 렌더링 되어있는 todo 클리어
-
+    if(!items) return;
+    
+    //종료시간 순으로 데이터를 화면에 렌더링
+    items.sort((a,b) => a.todoEndAt - b.todoEndAt);
     items.forEach(e => {
         // attrs = {prop:{}, style:{}, text:str}
         let todoLi = createElement('li',{prop:{className:'btn-lightcoral item row-between'}});
@@ -79,7 +75,14 @@ let renderTodo = () => {
     });
 }
 
-btnPopInpTodoClose.addEventListener('click', ev => {
+btnPopTodoOpen.addEventListener('click', ev => {
+    initTodoForm();
+    btnModifyTodo.style.display = 'none';
+    btnAddTodo.style.display = 'block';
+    popInpTodo.style.display='flex';
+})
+
+btnPopTodoClose.addEventListener('click', ev => {
     popInpTodo.style.display='none';
 })
 

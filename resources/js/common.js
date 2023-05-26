@@ -1,4 +1,4 @@
-let addLocalStorage = (k,v) =>{
+const addLocalStorage = (k,v) =>{
 
     let items = JSON.parse(localStorage.getItem(k));
     
@@ -10,7 +10,7 @@ let addLocalStorage = (k,v) =>{
     }
 }
 
-let addSessionStorage = (k,v) =>{
+const addSessionStorage = (k,v) =>{
     let items = JSON.parse(sessionStorage.getItem(k));
     
     if(items){
@@ -21,26 +21,26 @@ let addSessionStorage = (k,v) =>{
     }
 }
 
-let getLocalStorage = k => {
+const getLocalStorage = k => {
     let items = JSON.parse(localStorage.getItem(k));
     if(!items) return null;
     return items;
 }
 
-let getSessionStorage = k => {
+const getSessionStorage = k => {
     let items = JSON.parse(sessionStorage.getItem(k));
     if(!items) return null;
     return items;
 }
 
-let removeLocalStorage = (k, fn) => {
+const removeLocalStorage = (k, fn) => {
     let items = getLocalStorage(k);
     let tmpArr = items.filter(fn);
     localStorage.setItem(k, JSON.stringify(tmpArr));
 }
 
 // attrs = {prop:{}, style:{}, text:str}
-let createElement = (tag, attrs) => {
+const createElement = (tag, attrs) => {
     let element = document.createElement(tag);
     if(!attrs) return element;
 
