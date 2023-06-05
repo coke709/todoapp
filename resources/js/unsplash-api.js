@@ -39,7 +39,7 @@ const createUnsplashToken = async () => {
    // 토큰이 존재하지 않으면, 새로운 토큰을 생성
    // 토큰이 만료되었다면, 새로운 토큰을 생성
    let now = new Date().getTime();
-   if(!unsplashToken || unsplashToken.expirationOn < now) unsplashToken = createUnsplashToken();
+   if(!unsplashToken || unsplashToken.expirationOn < now) await unsplashToken = createUnsplashToken();
 
    document.querySelector('body').style.backgroundImage = `url(${unsplashToken.url})`;
    placeInfo.innerHTML = unsplashToken.location;
